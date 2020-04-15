@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# TODO: setup command line to copy various scripts for:
+# isomorphic/bedrock/bedrock-web etc.
+
 mkdir -p .github/workflows
 cd .github/workflows
-#curl -O
+curl -O https://raw.githubusercontent.com/digitalbazaar/ci-script/master/bedrock-node/main.yml
+cd ../..
+
+echo
+echo CI setup successfully.
