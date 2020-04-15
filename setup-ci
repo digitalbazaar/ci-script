@@ -1,0 +1,5 @@
+#!/bin/bash
+
+mkdir -p .github/workflows
+cd .github/workflows
+#curl -O
