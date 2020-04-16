@@ -1,11 +1,48 @@
 #!/bin/bash
 
+help_gnu() {
+  echo "Usage: ci-script [major | minor | patch]" 1>&2
+  exit
+}
+
+help() {
+  if [ "$GNU_GETOPT" = true ]; then
+    help_gnu
+  else
+    # help_not_gnu
+    help_gnu
+  fi
+}
+
+while true; do
+  case "$1" in
+    -h|--help) help ;;
+    --) shift; break ;;
+    *) break ;;
+  esac
+done
+
+PACKAGE_TYPE=$1
+
+if [ -z "$PACKAGE_TYPE" ] || ! [[ "$PACKAGE_TYPE" =~ ^(bedrock|isomorphic)$ ]]; then
+  echo "$MSG_ERROR: A release type must be specified: [bedrock | isomorphic]"
+  exit 1
+fi
+
 # TODO: setup command line to copy various scripts for:
 # isomorphic/bedrock/bedrock-web etc.
 
 mkdir -p .github/workflows
 cd .github/workflows
-curl -O https://raw.githubusercontent.com/digitalbazaar/ci-script/master/bedrock-node/main.yml
+
+if [ "$PACKAGE_TYPE" == "bedrock" ]; then
+  curl -O https://raw.githubusercontent.com/digitalbazaar/ci-script/master/bedrock-node/main.yml
+fi
+
+if [ "$PACKAGE_TYPE" == "isomorphic" ]; then
+  curl -O https://raw.githubusercontent.com/digitalbazaar/ci-script/master/isomorphic/main.yml
+fi
+
 cd ../..
 
 echo
