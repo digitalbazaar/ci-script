@@ -1,4 +1,4 @@
-name: Bedrock Karma CI
+name: Bedrock Web CI
 
 on: [push]
 
