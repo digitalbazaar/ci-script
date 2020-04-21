@@ -24,19 +24,20 @@ done
 
 PACKAGE_TYPE=$1
 
-if [ -z "$PACKAGE_TYPE" ] || ! [[ "$PACKAGE_TYPE" =~ ^(bedrock|isomorphic)$ ]]; then
-  echo "$MSG_ERROR: A release type must be specified: [bedrock | isomorphic]"
+if [ -z "$PACKAGE_TYPE" ] || ! [[ "$PACKAGE_TYPE" =~ ^(bedrock|bedrock-web|isomorphic)$ ]]; then
+  echo "$MSG_ERROR: A release type must be specified: [bedrock | bedrock-web | isomorphic]"
   exit 1
 fi
-
-# TODO: setup command line to copy various scripts for:
-# isomorphic/bedrock/bedrock-web etc.
 
 mkdir -p .github/workflows
 cd .github/workflows
 
 if [ "$PACKAGE_TYPE" == "bedrock" ]; then
   curl -O https://raw.githubusercontent.com/digitalbazaar/ci-script/master/bedrock-node/main.yml
+fi
+
+if [ "$PACKAGE_TYPE" == "bedrock-web" ]; then
+  curl -O https://raw.githubusercontent.com/digitalbazaar/ci-script/master/bedrock-web/main.yml
 fi
 
 if [ "$PACKAGE_TYPE" == "isomorphic" ]; then
