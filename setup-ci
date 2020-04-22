@@ -24,8 +24,8 @@ done
 
 PACKAGE_TYPE=$1
 
-if [ -z "$PACKAGE_TYPE" ] || ! [[ "$PACKAGE_TYPE" =~ ^(bedrock|bedrock-web|isomorphic)$ ]]; then
-  echo "$MSG_ERROR: A release type must be specified: [bedrock | bedrock-web | isomorphic]"
+if [ -z "$PACKAGE_TYPE" ] || ! [[ "$PACKAGE_TYPE" =~ ^(bedrock|bedrock-web|isomorphic|lint)$ ]]; then
+  echo "$MSG_ERROR: A release type must be specified: [bedrock | bedrock-web | isomorphic | lint]"
   exit 1
 fi
 
@@ -42,6 +42,10 @@ fi
 
 if [ "$PACKAGE_TYPE" == "isomorphic" ]; then
   curl -O https://raw.githubusercontent.com/digitalbazaar/ci-script/master/isomorphic/main.yml
+fi
+
+if [ "$PACKAGE_TYPE" == "lint" ]; then
+  curl -O https://raw.githubusercontent.com/digitalbazaar/ci-script/master/lint/main.yml
 fi
 
 cd ../..
