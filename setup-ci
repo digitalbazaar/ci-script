@@ -1,7 +1,7 @@
 #!/bin/bash
 
 help_gnu() {
-  echo "Usage: ci-script [major | minor | patch]" 1>&2
+  echo "Usage: ci-script [bedrock | bedrock-web | isomorphic | lint]" 1>&2
   exit
 }
 
