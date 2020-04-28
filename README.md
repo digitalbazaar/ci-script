@@ -24,8 +24,7 @@ Where MODE is one of:
 
 If you are using lint support:
 
-    npm i -D eslint
-    npm i -D eslint-config-digitalbazaar
+    npm i -D eslint eslint-config-digitalbazaar
     # optional: eslint-plugin-jsdoc
     # optional: eslint-plugin-vue
 
