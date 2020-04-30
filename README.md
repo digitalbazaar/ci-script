@@ -49,7 +49,8 @@ Add a `coverage-ci` script target in `package.json` something like:
 
     "coverage-ci": "cross-env NODE_ENV=test nyc --reporter=lcovonly npm run test-node",
 
-Note the `lcovonly` reporter. The default setup will use `./coverage/lcov.info`.
+Note the `lcovonly` reporter. The default CI setup will use the
+`./coverage/lcov.info` file that is generated.
 
 Ensure `package.json` or nyc config is setup something like:
 
